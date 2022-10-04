@@ -1,0 +1,82 @@
+﻿@*@model IEnumerable<SoupStorePracticeProject.Models.ParentStoreVm>*@
+@model dynamic
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Store - Add ingredients to your soup</h1>
+
+<p>
+    <a asp-action="Create">Create New Product</a>
+</p>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.product)*@
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.price)*@
+                        </th>
+                        <th>
+                            @*@Html.DisplayNameFor(model => model.picture)*@
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="hover-shadow">
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.product)*@
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(modelItem => item.price)*@
+                            </td>
+                            <td style="width:50%">
+                                @*<img height="50" src="@Html.DisplayFor(modelItem => item.picture)" />*@
+                            </td>
+                            <td><button type="button" class="btn btn-primary btn-lg">Add To Cart</button></td>
+                            @*<td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </td>*@
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col col-lg-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cart for {user}</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Carrot
+                        </td>
+                        <td>$10</td>
+                    </tr>
+                    <tr>
+                        <td><b>Final Price: </b></td>
+                        <td><b>$34</b></td>
+                    </tr>
+                    <tr>
+                        <td class="border-0"><button type="button" class="btn btn-primary">Clear Cart</button></td>
+                        <td class="border-0"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

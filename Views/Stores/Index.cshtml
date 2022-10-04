@@ -1,0 +1,92 @@
+﻿@*@model IEnumerable<SoupStorePracticeProject.Models.Store>*@
+@model dynamic
+
+@{
+    //ViewData["Title"] = "Index";
+    ViewBag.Title = "Store";
+}
+
+<h1>Store - Add ingredients to your soup</h1>
+
+<p>
+    <a asp-action="Create">Create New Product</a>
+</p>
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Product
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Picture
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (Store store in Model.Store)
+            {
+                <tr class="hover-shadow">
+                    <td>
+                        @store.product
+                    </td>
+                    <td>
+                        @store.price
+                    </td>
+                    <td style="width:50%">
+                        <img height="50" src="@store.picture" />
+                    </td>
+                            <td>
+                                <a class="btn btn-primary" href="/Stores/AddToCart/@store.Id">Add To Cart</a>
+                            </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+      </div>
+        <div class="col col-lg-2">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cart</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Cart cart in Model.Cart)
+                    {
+                    <tr>
+                        <td>
+                            @cart.product
+                        </td>
+                        <td>$@cart.price</td>
+                    </tr>
+                    }
+                    <tr>
+                        <td><b>Final Price: </b></td>
+                        <td><b>$34</b></td>
+                    </tr>
+                    <tr >
+                        <td class="border-0">
+                            <a class="btn btn-danger" href="/Stores/DeleteCart/">Clear Cart</a>
+
+                        </td>
+                        <td class="border-0"></td>
+
+                        
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+</div>
